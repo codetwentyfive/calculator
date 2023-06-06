@@ -2,6 +2,37 @@ let firstNumber = '';
 let operator = '';
 let secondNumber = '';
 
+document.addEventListener('keydown', keyPress);
+
+function keyPress(event) {
+    const key = event.key;
+
+    if (key === '/') {
+        event.preventDefault();
+    }
+    //handles numeric keys
+    if (/^[0-9]$/.test(key)) {
+        appendNumber(key);
+    }
+    if (key === '+' || key === '-' || key === '*' || key === '/') {
+        setOperator(key);
+    }
+
+    if (key === '.') {
+        appendDecimal();
+    }
+
+    if (key === 'Backspace') {
+        backspace();
+    }
+
+    if (key === 'Enter') {
+        calculate();
+    }
+
+
+}
+
 function appendNumber(number) {
     if (operator === '') {
         firstNumber += number;
