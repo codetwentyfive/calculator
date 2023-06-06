@@ -12,6 +12,20 @@ function appendNumber(number) {
     }
 }
 
+function appendDecimal() {
+    if (operator === '') {
+        if (!firstNumber.includes('.')) {
+            firstNumber += '.';
+            updateDisplay(firstNumber);
+        }
+    } else {
+        if (!secondNumber.includes('.')) {
+            secondNumber += '.';
+            updateDisplay(secondNumber);
+        }
+    }
+}
+
 function setOperator(op) {
     operator = op;
 }
@@ -57,13 +71,13 @@ function calculate() {
 
 function backspace() {
     if (operator === '') {
-      firstNumber = firstNumber.slice(0, -1);
-      updateDisplay(firstNumber);
+        firstNumber = firstNumber.slice(0, -1);
+        updateDisplay(firstNumber);
     } else {
-      secondNumber = secondNumber.slice(0, -1);
-      updateDisplay(secondNumber);
+        secondNumber = secondNumber.slice(0, -1);
+        updateDisplay(secondNumber);
     }
-  }
+}
 
 function updateDisplay(value) {
     document.getElementById('display').value = value;
