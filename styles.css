@@ -1,3 +1,14 @@
+@font-face {
+  font-family: scientific;
+  src: url(ScientificCalculatorLcdRegular-Kn7X.ttf);
+}
+
+@font-face {
+  font-family: "ds_digital";
+  src: url(/DS-DIGIT.TTF) format("truetype");
+}
+
+
 body {
   box-sizing: border-box;
   background-color: whitesmoke;
@@ -12,12 +23,13 @@ body {
 
 .calculator {
 
-  font-family: "Roboto Mono", monospace;
   display: flex;
   flex-direction: column;
   background-color: white;
   width: 400px;
   height: 410px;
+  border: 2em;
+  border-color: #4c596d;
   border-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -32,25 +44,45 @@ body {
   justify-content: center;
   align-items: center;
   height: 100px;
-  background-color: rgb(0, 52, 86);
+  background-color: rgb(133,147,140);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  
+  box-shadow: 1px 1px 10px rgb(14, 25, 25) inset;
+  pointer-events: none;
+
 }
 
 #display {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: flex-end;
-  font-size: 3rem;
+  font-size: 2rem;
+  font-family: "ds_digital";
+
   width: 90%;
   overflow-x: auto;
+  border: none;
+  background-color: transparent;
+}
+
+#line1 {
+  height: 50px;
+  color: black;
+  font-size: 0.4em;
+  font-family: "scientific";
+}
+
+#line2 {
+  height: 50px;
+  font-size: 1em;
+  font-family: "ds_digital";
 }
 
 .operator {
   font-size: 1.5rem;
+  color: rgb(249,249,237);
+
   background-color: #4c596d;
 }
 
@@ -58,7 +90,9 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 8px;
-  padding: 20px
+  padding: 20px;
+  background-color: rgb(44,48,51)
+
 }
 
 button {
@@ -66,6 +100,7 @@ button {
   width: 100%;
   padding: 10px;
   font-size: 18px;
+  border-radius: 2em;
 }
 
 button:hover {
@@ -81,8 +116,6 @@ button:active {
 }
 
 .calculate {
-  /* Styles for the "calculate" button */
-  background-color: blue;
+  background-color: rgb(113,112,134);
   color: white;
-  /* Add more styles as needed */
 }
