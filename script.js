@@ -94,6 +94,9 @@ function calculate() {
             return;
     }
 
+    // Round down result to three decimal places
+    result = Math.floor(result * 1000) / 1000;
+
     updateDisplay(result);
     firstNumber = result.toString();
     operator = '';
