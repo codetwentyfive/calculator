@@ -4,6 +4,9 @@ let secondNumber = '';
 
 document.addEventListener('keydown', keyPress);
 
+const line1 = document.getElementById ("line1");
+const line2 = document.getElementById ("line2");
+
 function keyPress(event) {
     const key = event.key;
 
@@ -61,6 +64,8 @@ function setOperator(op) {
     operator = op;
 }
 
+ 
+
 function clearDisplay() {
     firstNumber = '';
     operator = '';
@@ -85,7 +90,7 @@ function calculate() {
             break;
         case '/':
             if (num2 === 0) {
-                updateDisplay("You have created a black hole!");
+                updateDisplay("Not possible ... yet");
                 return;
             }
             result = num1 / num2;
