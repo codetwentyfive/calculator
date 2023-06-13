@@ -4,8 +4,8 @@ let secondNumber = '';
 
 document.addEventListener('keydown', keyPress);
 
-const line1 = document.getElementById ("line1");
-const line2 = document.getElementById ("line2");
+const line1 = document.getElementById("line1");
+const line2 = document.getElementById("line2");
 
 function keyPress(event) {
     const key = event.key;
@@ -32,8 +32,6 @@ function keyPress(event) {
     if (key === 'Enter') {
         calculate();
     }
-
-
 }
 
 function appendNumber(number) {
@@ -64,8 +62,6 @@ function setOperator(op) {
     operator = op;
 }
 
- 
-
 function clearDisplay() {
     firstNumber = '';
     operator = '';
@@ -74,39 +70,47 @@ function clearDisplay() {
 }
 
 function calculate() {
-    let result;
-    const num1 = parseFloat(firstNumber);
-    const num2 = parseFloat(secondNumber);
+  let result;
+  let num1 = parseFloat(firstNumber);
+  let num2 = parseFloat(secondNumber);
 
-    switch (operator) {
-        case '+':
-            result = num1 + num2;
-            break;
-        case '-':
-            result = num1 - num2;
-            break;
-        case '*':
-            result = num1 * num2;
-            break;
-        case '/':
-            if (num2 === 0) {
-                updateDisplay("Not possible ... yet");
-                return;
-            }
-            result = num1 / num2;
-            break;
-        default:
-            return;
-    }
+  if (firstNumber.startsWith('-')) {
+      num1 = -Math.abs(num1);
+  }
+  if (secondNumber.startsWith('-')) {
+      num2 = -Math.abs(num2);
+  }
 
-    // Round down result to three decimal places
-    result = Math.floor(result * 1000) / 1000;
+  switch (operator) {
+      case '+':
+          result = num1 + num2;
+          break;
+      case '-':
+          result = num1 - num2;
+          break;
+      case '*':
+          result = num1 * num2;
+          break;
+      case '/':
+          if (num2 === 0) {
+              updateDisplay("Not possible ... yet");
+              return;
+          }
+          result = num1 / num2;
+          break;
+      default:
+          return;
+  }
 
-    updateDisplay(result);
-    firstNumber = result.toString();
-    operator = '';
-    secondNumber = '';
+  // Round down result to three decimal places
+  result = Math.floor(result * 1000) / 1000;
+
+  updateDisplay(result);
+  firstNumber = result.toString();
+  operator = '';
+  secondNumber = '';
 }
+
 
 function backspace() {
     if (operator === '') {
@@ -116,6 +120,16 @@ function backspace() {
         secondNumber = secondNumber.slice(0, -1);
         updateDisplay(secondNumber);
     }
+}
+
+function posNeg() {
+  if (operator === '') {
+      firstNumber = (parseFloat(firstNumber) * -1).toString();
+      updateDisplay(firstNumber);
+  } else {
+      secondNumber = (parseFloat(secondNumber) * -1).toString();
+      updateDisplay(secondNumber);
+  }
 }
 
 function updateDisplay(value) {
