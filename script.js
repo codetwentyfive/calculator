@@ -71,15 +71,8 @@ function clearDisplay() {
 
 function calculate() {
   let result;
-  let num1 = parseFloat(firstNumber);
-  let num2 = parseFloat(secondNumber);
-
-  if (firstNumber.startsWith('-')) {
-      num1 = -Math.abs(num1);
-  }
-  if (secondNumber.startsWith('-')) {
-      num2 = -Math.abs(num2);
-  }
+  const num1 = parseFloat(firstNumber);
+  const num2 = parseFloat(secondNumber);
 
   switch (operator) {
       case '+':
@@ -106,9 +99,12 @@ function calculate() {
   result = Math.floor(result * 1000) / 1000;
 
   updateDisplay(result);
+  line1.textContent = firstNumber + ' ' + operator + ' ' + secondNumber;
   firstNumber = result.toString();
   operator = '';
   secondNumber = '';
+  
+  line2.textContent = updateDisplay(results);
 }
 
 
@@ -133,5 +129,12 @@ function posNeg() {
 }
 
 function updateDisplay(value) {
-    document.getElementById('display').value = value;
+  if (operator === '') {
+      line1.textContent = '';
+      line2.textContent = value;
+  } else {
+      line1.textContent = firstNumber +operator;
+      line2.textContent = operator +' ' + value;
+  }
+  //document.getElementById('display').value = value;
 }
