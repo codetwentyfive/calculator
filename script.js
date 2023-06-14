@@ -81,7 +81,7 @@ function calculate() {
       case '-':
           result = num1 - num2;
           break;
-      case '*':
+      case 'x':
           result = num1 * num2;
           break;
       case '/':
@@ -134,7 +134,7 @@ function updateDisplay(value) {
       line2.textContent = value;
   } else {
       line1.textContent = firstNumber +operator;
-      line2.textContent = operator +' ' + value;
+      line2.textContent = value;
   }
   //document.getElementById('display').value = value;
 }
